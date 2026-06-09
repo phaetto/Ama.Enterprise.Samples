@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ama.Enterprise.CRDT.Distributed.TableStorage" Version="0.1.260715-ci1707" />
+    <PackageReference Include="Ama.Enterprise.CRDT.MessagePack" Version="0.1.260715-ci1707" />
+    <PackageReference Include="Ama.Enterprise.FeatureFlags" Version="0.1.260715-ci1707" />
+    <PackageReference Include="Ama.Enterprise.P2p.AspNetCore" Version="0.1.260715-ci1707" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="10.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+  </ItemGroup>
+
+</Project>

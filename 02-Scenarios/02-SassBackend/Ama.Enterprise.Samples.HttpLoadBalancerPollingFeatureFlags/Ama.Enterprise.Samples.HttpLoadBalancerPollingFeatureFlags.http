@@ -1,0 +1,21 @@
+@Ama.Enterprise.Samples.HttpLoadBalancerPollingFeatureFlags_HostAddress = https://localhost:5031
+
+GET {{Ama.Enterprise.Samples.HttpLoadBalancerPollingFeatureFlags_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{Ama.Enterprise.Samples.HttpLoadBalancerPollingFeatureFlags_HostAddress}}/flags/
+Accept: application/json
+
+###
+
+POST {{Ama.Enterprise.Samples.HttpLoadBalancerPollingFeatureFlags_HostAddress}}/flags/TestFlag?isEnabled=true
+Accept: application/json
+
+###
+
+DELETE {{Ama.Enterprise.Samples.HttpLoadBalancerPollingFeatureFlags_HostAddress}}/flags/TestFlag
+Accept: application/json
+
+###

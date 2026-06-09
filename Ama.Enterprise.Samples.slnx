@@ -1,0 +1,30 @@
+<Solution>
+  <Folder Name="/01-Beginner/">
+    <File Path="01-Beginner/README.md" />
+    <Project Path="01-Beginner/Ama.Enterprise.Samples.TcpUdpFeatureFlags/Ama.Enterprise.Samples.TcpUdpFeatureFlags.csproj" Id="9e44136a-77c8-4933-a2e7-44495e076513" />
+  </Folder>
+  <Folder Name="/02-Scenarios/">
+    <File Path="02-Scenarios/README.md" />
+  </Folder>
+  <Folder Name="/02-Scenarios/01-LocalNetwork/">
+    <File Path="02-Scenarios/01-LocalNetwork/README.md" />
+    <Project Path="02-Scenarios/01-LocalNetwork/Ama.Enterprise.Samples.QuicUdpFeatureFlags/Ama.Enterprise.Samples.QuicUdpFeatureFlags.csproj" Id="eac8ae96-2682-4961-b014-0a78c8753cb0" />
+  </Folder>
+  <Folder Name="/02-Scenarios/02-SassBackend/">
+    <File Path="02-Scenarios/02-SassBackend/README.md" />
+    <Project Path="02-Scenarios/02-SassBackend/Ama.Enterprise.Samples.HttpDnsFeatureFlags/Ama.Enterprise.Samples.HttpDnsFeatureFlags.csproj" Id="ca17af52-6ea8-4682-b508-ae7a6eff3407" />
+    <Project Path="02-Scenarios/02-SassBackend/Ama.Enterprise.Samples.HttpLoadBalancerPollingFeatureFlags/Ama.Enterprise.Samples.HttpLoadBalancerPollingFeatureFlags.csproj" Id="abfe0364-9566-49fa-8566-bae4e62947be" />
+  </Folder>
+  <Folder Name="/02-Scenarios/03-ConnectionOverInternet/">
+    <File Path="02-Scenarios/03-ConnectionOverInternet/README.md" />
+  </Folder>
+  <Folder Name="/Common/">
+    <Project Path="Ama.Enterprise.Samples.Common/Ama.Enterprise.Samples.Common.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="CodingStandards.md" />
+    <File Path="README.md" />
+    <File Path="solution.settings.json" />
+  </Folder>
+</Solution>
