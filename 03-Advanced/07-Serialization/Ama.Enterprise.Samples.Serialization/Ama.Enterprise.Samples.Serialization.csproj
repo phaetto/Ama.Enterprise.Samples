@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PublishAot>true</PublishAot>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ama.Enterprise.CRDT.MessagePack" Version="0.1.261119-ci1904" />
+    <PackageReference Include="Ama.Enterprise.FeatureFlags" Version="0.1.261119-ci1904" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Ama.Enterprise.Samples.Common\Ama.Enterprise.Samples.Common.csproj" />
+  </ItemGroup>
+
+</Project>
