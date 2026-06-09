@@ -1,0 +1,21 @@
+@Ama.Enterprise.Samples.HttpDnsFeatureFlags_HostAddress = https://localhost:5290
+
+GET {{Ama.Enterprise.Samples.HttpDnsFeatureFlags_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{Ama.Enterprise.Samples.HttpDnsFeatureFlags_HostAddress}}/flags/
+Accept: application/json
+
+###
+
+POST {{Ama.Enterprise.Samples.HttpDnsFeatureFlags_HostAddress}}/flags/TestFlag?isEnabled=true
+Accept: application/json
+
+###
+
+DELETE {{Ama.Enterprise.Samples.HttpDnsFeatureFlags_HostAddress}}/flags/TestFlag
+Accept: application/json
+
+###

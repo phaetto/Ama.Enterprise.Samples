@@ -1,0 +1,109 @@
+name: Deploy HTTP Load Balancer Polling Feature Flags
+
+on:
+  workflow_dispatch:
+    inputs:
+      resourceGroupName:
+        description: 'The Azure Resource Group name for deployment'
+        required: true
+        default: 'ama-enterprise-featureflags-rg'
+        type: string
+      location:
+        description: 'The location for all resources'
+        required: true
+        default: 'westeurope'
+        type: string
+      baseName:
+        description: 'The base name used for generating resource names'
+        required: true
+        default: 'ama-enterprise-featureflags'
+        type: string
+      appServicePlanName:
+        description: 'The name of the App Service Plan'
+        required: true
+        default: 'ama-enterprise-featureflags-asp'
+        type: string
+      appServicePlanSku:
+        description: 'The SKU of the App Service Plan'
+        required: false
+        default: 'B1'
+        type: string
+      webAppName:
+        description: 'The name of the Web App'
+        required: true
+        default: 'ama-enterprise-featureflags-app'
+        type: string
+      vnetName:
+        description: 'The name of the Virtual Network'
+        required: false
+        default: 'ama-enterprise-featureflags-vnet'
+        type: string
+      advertisedPort:
+        description: 'Advertised port for the node'
+        required: false
+        default: '8080'
+        type: string
+      useHttps:
+        description: 'Whether to use HTTPS (true/false)'
+        required: false
+        default: 'false'
+        type: string
+      targetHost:
+        description: 'Target host for peer discovery'
+        required: false
+        default: 'ama-enterprise-featureflags-app.azurewebsites.net'
+        type: string
+      targetPort:
+        description: 'Target port for peer discovery'
+        required: false
+        default: '80'
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Publish application
+        run: dotnet publish 02-Scenarios/02-SassBackend/Ama.Enterprise.Samples.HttpLoadBalancerPollingFeatureFlags/Ama.Enterprise.Samples.HttpLoadBalancerPollingFeatureFlags.csproj -c Release -r linux-x64 -o ./publish
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Azure Infrastructure (Bicep)
+        uses: azure/arm-deploy@v2
+        with:
+          resourceGroupName: ${{ inputs.resourceGroupName }}
+          template: 02-Scenarios/02-SassBackend/Ama.Enterprise.Samples.HttpLoadBalancerPollingFeatureFlags/Infrastructure/main.bicep
+          parameters: >
+            location=${{ inputs.location }}
+            baseName=${{ inputs.baseName }}
+            appServicePlanName=${{ inputs.appServicePlanName }}
+            appServicePlanSku=${{ inputs.appServicePlanSku }}
+            webAppName=${{ inputs.webAppName }}
+            vnetName=${{ inputs.vnetName }}
+            advertisedPort=${{ inputs.advertisedPort }}
+            useHttps=${{ inputs.useHttps }}
+            targetHost=${{ inputs.targetHost }}
+            targetPort=${{ inputs.targetPort }}
+            clusterCertificateBase64=${{ secrets.CLUSTER_CERTIFICATE_BASE64 }}
+            encryptionKeyBase64=${{ secrets.ENCRYPTION_KEY_BASE64 }}
+
+      - name: Deploy application to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ inputs.webAppName }}
+          package: ./publish
