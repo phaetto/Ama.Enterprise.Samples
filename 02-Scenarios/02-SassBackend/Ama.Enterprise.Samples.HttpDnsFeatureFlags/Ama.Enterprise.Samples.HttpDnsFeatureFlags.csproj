@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ama.Enterprise.FeatureFlags" Version="0.1.260805-ci1828" />
-    <PackageReference Include="Ama.Enterprise.P2p.AspNetCore" Version="0.1.260805-ci1828" />
+    <PackageReference Include="Ama.Enterprise.FeatureFlags" Version="0.1.261006-ci1547" />
+    <PackageReference Include="Ama.Enterprise.P2p.AspNetCore" Version="0.1.261006-ci1550" />
   </ItemGroup>
 
 </Project>

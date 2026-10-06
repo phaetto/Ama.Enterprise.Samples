@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ama.Enterprise.FeatureFlags" Version="0.1.260805-ci1828" />
+    <PackageReference Include="Ama.Enterprise.FeatureFlags" Version="0.1.261006-ci1547" />
   </ItemGroup>
 
   <ItemGroup>
